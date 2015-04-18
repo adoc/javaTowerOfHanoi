@@ -5,6 +5,6 @@ public class Main {
 
         // PuzzleRunner(numberOfStartingDiscs)
 
-        new PuzzleRunner(5).run();
+        new PuzzleRunner(10).run();
     }
 }
