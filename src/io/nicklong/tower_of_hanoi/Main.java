@@ -1,15 +1,7 @@
-package io.nicklong.tower_puzzle;
-
-
+package io.nicklong.tower_of_hanoi;
 
 public class Main {
-
-
     public static void main(String[] args) {
-
-        Puzzle puzzle = new Puzzle(3, 3);
-
-        puzzle.run();
-
+        new PuzzleRunner().run();
     }
 }
