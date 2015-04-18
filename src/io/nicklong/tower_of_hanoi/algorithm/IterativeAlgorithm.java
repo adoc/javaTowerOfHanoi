@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 /**
  * Implemented iterative from Wikipedia. Least number of steps at 2n - 1.
- *
  * @author Nick Long (Implementation)
  * @see "https://en.wikipedia.org/wiki/Tower_of_Hanoi"
  */
@@ -28,6 +27,7 @@ public class IterativeAlgorithm extends LazySlaveAlgorithm {
     private boolean even;   // Number of discs is even;
 
     /**
+     * Subclass SelectTarget implementation.
      * @return Position
      */
     protected Position doSelectTarget() {
@@ -61,8 +61,7 @@ public class IterativeAlgorithm extends LazySlaveAlgorithm {
 
     /**
      * Construct an IterativeAlgorithm
-     *
-     * @param landscape
+     * @param landscape The Landscape upon which to operate.
      */
     public IterativeAlgorithm(Landscape landscape) {
         super(landscape);

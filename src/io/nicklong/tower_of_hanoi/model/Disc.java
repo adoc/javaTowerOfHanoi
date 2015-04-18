@@ -11,8 +11,7 @@ public class Disc {
 
     /**
      * Get the size of the Disc.
-     *
-     * @return int
+     * @return size of Disc
      */
     public int getSize() {
         return size;
@@ -20,8 +19,7 @@ public class Disc {
 
     /**
      * Represent the Disc textually.
-     *
-     * @return String
+     * @return repeated character
      */
     public String draw() {
         return StringUtils.repeatChar(repChar, (2 * size + 1) - 2);
@@ -29,8 +27,7 @@ public class Disc {
 
     /**
      * Construct Disc with a size.
-     *
-     * @param size
+     * @param size Size of disc
      */
     public Disc(int size) {
         assert size > 0;
@@ -39,9 +36,8 @@ public class Disc {
 
     /**
      * Construct a Disc with a size and repChar.
-     *
-     * @param size
-     * @param repChar
+     * @param size Size of disc
+     * @param repChar Char to be repeated
      */
     public Disc(int size, char repChar) {
         this(size);

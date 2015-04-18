@@ -1,7 +1,5 @@
 package io.nicklong.tower_of_hanoi.model;
 
-import io.nicklong.utils.StringUtils;
-
 import java.util.ArrayList;
 
 /**
@@ -12,22 +10,48 @@ public class Landscape {
     private int numPositions;           // or Poles in the PuzzleRunner
     private int numDiscs;               // Number of discs at the starting position.
 
+    /**
+     * Gets the number of Positions in the Landscape.
+     *
+     * @return Number of Positions
+     */
     public int getNumPositions() {
         return numPositions;
     }
 
+    /**
+     * Gets the number of Discs on the Landscape.
+     *
+     * @return Number of discs
+     */
     public int getNumDiscs() {
         return numDiscs;
     }
 
+    /**
+     * Gets the ordinal of the Position on the Landscape.
+     *
+     * @param position Position to find ordinal
+     * @return Ordinal of position
+     */
     public int getPositionOrdinal(Position position) {
         return positions.indexOf(position);
     }
 
+    /**
+     * Gets the right-most Position on the Landscape.
+     *
+     * @return Rightmost Position object.
+     */
     public Position getRightmostPosition() {
         return positions.get(positions.size() - 1);
     }
 
+    /**
+     * Gets an list of Positions that are eligible sources of discs.
+     *
+     * @return Eligible source Positions ArrayList
+     */
     public ArrayList<Position> getEligibleSources() {
         ArrayList<Position> eligibleSources = new ArrayList<>();
         for (Position position : positions) {
@@ -38,6 +62,12 @@ public class Landscape {
         return eligibleSources;
     }
 
+    /**
+     * Given a Disc parameter, determine the eligible targets for the Disc.
+     *
+     * @param sourceDisc Disc to attempt to move
+     * @return Eligible targets for this Disc to move
+     */
     public ArrayList<Position> getEligibleTargets(Disc sourceDisc) {
         ArrayList<Position> eligibleTargets = new ArrayList<>();
         for (Position position : positions) {
@@ -48,49 +78,30 @@ public class Landscape {
         return eligibleTargets;
     }
 
+    /**
+     * Returns true if the Landscape is completed.
+     * @return Is the landscape done
+     */
     public boolean isDone() {
         return getRightmostPosition().getNumDiscs() == getNumDiscs();
     }
 
-    public ArrayList<ArrayList> toList() {
-        ArrayList<ArrayList> output = new ArrayList<>();
+    /**
+     * Represent the Positions on the Landscape and their inner Discs.
+     *
+     * @return ArrayList of Positions and Discs
+     */
+    public ArrayList<ArrayList<String>> toList() {
+        ArrayList<ArrayList<String>> output = new ArrayList<>();
         for (Position position : positions)
             output.add(position.toList());
         return output;
     }
 
-    public void draw() {
-        int numDiscs = getNumDiscs();
-        int numPositions = getNumPositions();
-        ArrayList<ArrayList> landscapeRep = toList();
-        String pad;
-
-        for (int iterD = numDiscs - 1; iterD >= 0; iterD--) {
-            for (int iterP = 0; iterP < numPositions; iterP++) {
-                ArrayList<String> positionRep = landscapeRep.get(iterP);
-                int padLength = (2 * numDiscs + 1);
-
-                if (positionRep.size() - iterD > 0) {
-                    String discRep = positionRep.get(positionRep.size() - iterD - 1);
-                    int discSize = discRep.length();
-                    int discPad = (2 * discSize + 1) / 2;
-
-                    pad = StringUtils.repeatChar(' ', (padLength - discPad) / 2);
-
-                    System.out.print(pad + discRep + pad);
-                } else {
-                    pad = StringUtils.repeatChar(' ', padLength / 2);
-                    System.out.print(pad + "|" + pad);
-                }
-            }
-            System.out.print("\n");
-        }
-
-        System.out.print(StringUtils.repeatChar('-', 6 * numDiscs + 3) + "\n");
-    }
-
     /**
      * Build the vast game landscape.
+     * @param numDiscs Number of Discs in Landscape
+     * @param numPositions Number of Positions on Landscape
      */
     public Landscape(int numDiscs, int numPositions) {
         this.numDiscs = numDiscs;

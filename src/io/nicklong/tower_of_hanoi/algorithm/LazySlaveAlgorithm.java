@@ -9,7 +9,6 @@ import java.util.Comparator;
 
 /**
  * "Lazy Slave" algorithm for solving the Tower of Hanoi.
- *
  * @author Nick Long
  */
 public class LazySlaveAlgorithm extends Algorithm {
@@ -36,13 +35,13 @@ public class LazySlaveAlgorithm extends Algorithm {
     protected class compTopDiscSize implements Comparator<Position> {
         @Override
         public int compare(Position pos1, Position pos2) {
-            return pos1.topDisc().getSize() - pos2.topDisc().getSize();
+            return pos1.getTopDisc().getSize() - pos2.getTopDisc().getSize();
         }
     }
 
     /**
-     * Chooses the Position of the smallest eligible Disc that has not just moved.
-     *
+     *  Subclass implementation of SelectSource. Chooses the Position of
+     *  the smallest eligible Disc that has not just moved.
      * @return Position
      * @throws UnsupportedOperationException
      */
@@ -64,7 +63,6 @@ public class LazySlaveAlgorithm extends Algorithm {
 
     /**
      * Chooses the the smallest eligible target Position.
-     *
      * @return Position
      */
     protected Position doSelectTarget() {
@@ -76,8 +74,7 @@ public class LazySlaveAlgorithm extends Algorithm {
 
     /**
      * Construct a LazySlaveAlgorithm.
-     *
-     * @param landscape
+     * @param landscape The Landscape upon which to slave away.
      */
     public LazySlaveAlgorithm(Landscape landscape) {
         super(landscape);
